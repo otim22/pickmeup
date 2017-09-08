@@ -15,7 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import TemplateView
+
+from resturants.views import (
+        resturant_listview,
+        ResturantListView,
+        ResturantDetailView,
+        ResturantCreateView,
+    )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^resturants/$', ResturantListView.as_view()),
+    url(r'^resturants/create/$', ResturantCreateView.as_view()),
+    url(r'^resturants/(?P<slug>[\w-]+)/$', ResturantDetailView.as_view()),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+    url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
 ]
