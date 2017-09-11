@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ fotm.instance.title }} | Resturants | {{ block.super }} {% endblock head_title %}
+
+{% block content %}
+    <h1>{{ fotm.instance.title }} <small>{{ fotm.instance.category }}</small></h1>
+    <p>{{ fotm.instance.location }}</p>
+    <p>{{ fotm.instance.timestamp }}, updated {{ fotm.instance.updated|timesince }} ago.</p>
+
+    <hr/>
+    <h3>Make Changes</h3>
+    {% include 'snippets/form-snippet.html' with form=form %}
+{% endblock %}
